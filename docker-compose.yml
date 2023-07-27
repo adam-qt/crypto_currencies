@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+
+    volumes:
+      - psql_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${PASSWORD}
+      POSTGRES_HOST: ${HOST}
+      POSTGRES_PORT: ${PORT}
+
+  web:
+    build:
+      context: .
+    volumes:
+      - .:/crypto
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - '8000:8000'
+
+    depends_on:
+      - db
+volumes:
+  psql_data:

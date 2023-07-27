@@ -1,0 +1,26 @@
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}   {% endblock %} </title>
+    <link type="text/css" href="{% static 'css/users.css' %}" rel="stylesheet"/>
+
+</head>
+<body>
+<div id="__next">
+
+    <div class="wrapper fadeInDown">
+        <div id="formContent"><h2 class="active"> Sign In </h2>
+            <h2 class="inactive underlineHover"><a href="{% url 'users:registration' %}">Reg</a></h2>
+            <form action="{% url 'users:login' %}" method="post">
+                {% csrf_token %}
+                {{ form.username }}
+                {{ form.password }}
+
+                <input class="fadeIn fourth" type="submit" value="Log In">
+            </form>
+            <div id="formFooter"><a class="underlineHover" href="{% url 'crypto_currencies:crypto_list' %}">Retun to mainpage</a></div>
+        </div>
+    </div>
+</div>
+</body>

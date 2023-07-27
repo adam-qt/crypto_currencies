@@ -1,0 +1,222 @@
+* {
+    box-sizing: border-box
+}
+
+
+th > a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.bod {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+}
+
+
+header {
+    background: grey;
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    border-bottom: solid white 3px;
+}
+
+header a h1 {
+    float: left;
+    font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+    margin-top: 20px;
+    margin-left: 40px;
+    color: black;
+    padding: 0;
+    display: flex;
+
+}
+
+header nav a {
+    font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+    color: black;
+    text-decoration: none;
+    padding-top: 15px;
+    padding-left: 20px;
+    font-size: 28px;
+    line-height: 29px;
+    transition: 1s;
+
+
+}
+header nav a:hover{
+    color: dimgray;
+     transform: scale(1.2);
+}
+
+nav {
+    margin-top: 2.3%;
+    margin-right: 15%;
+
+}
+
+.content {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+
+
+form {
+    width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+.pagination a {
+  color: inherit;
+  text-decoration: none !important;
+}
+
+/* Добавить подчеркивание при наведении */
+.pagination a:hover {
+  text-decoration: underline;
+}
+
+
+.crypto-table {
+    display: block;
+    height: 400px;
+    margin: auto;
+}
+
+.table {
+
+	width: 100%;
+
+	border: none;
+
+	margin-bottom: 20px;
+
+}
+
+.table thead th {
+    text-decoration: none;
+	font-weight: bold;
+
+	text-align: left;
+
+	border: none;
+
+	padding: 10px 15px;
+
+	background: #d8d8d8;
+
+	font-size: 14px;
+
+	border-left: 1px solid #ddd;
+
+	border-right: 1px solid #ddd;
+
+}
+
+.table tbody td {
+
+	text-align: left;
+
+	border-left: 1px solid #ddd;
+
+	border-right: 1px solid #ddd;
+
+	padding: 10px 15px;
+
+	font-size: 14px;
+
+	vertical-align: top;
+
+}
+
+.table thead tr th:first-child, .table tbody tr td:first-child {
+    text-decoration: none;
+	border-left: none;
+
+}
+
+.table thead tr th:last-child, .table tbody tr td:last-child {
+
+	border-right: none;
+    text-decoration: none;
+}
+
+.table tbody tr:nth-child(even){
+
+	background: #f3f3f3;
+
+}
+caption > a {
+    color: black;
+    text-decoration: none !important;
+    transition: transform 0.3s ease !important;
+    font-weight: bold;
+}
+caption > a:hover {
+  color: #92badd;
+}
+
+th > a {
+  color: black;
+  text-decoration: none !important;
+    transition: transform 0.3s ease !important;
+    font-weight: bold;
+}
+th > a:hover {
+  color: #92badd;
+}
+td > a {
+  color: #0d0d0d;
+  text-decoration: none !important;
+    transition: transform 0.3s ease !important;
+    font-weight: bold;
+
+}
+td > a:hover {
+  color: #92badd;
+    transform: rotate(120deg) ;
+}
+.search {
+  display: flex;
+  align-items: center;
+    margin-bottom: 20px;
+}
+
+.search input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.search button[type="submit"] {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+
+
+

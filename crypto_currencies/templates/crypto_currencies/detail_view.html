@@ -1,0 +1,58 @@
+{% extends 'crypto_currencies/layout.html' %}
+{% load static %}
+{% block favourite %}
+<a class="lin" href='{% url 'crypto_currencies:crypto_list' %}' >main page</a>
+{% endblock %}
+
+{% block user %}
+    {% if user.is_authenticated %}
+        <a href='{% url 'users:logout' %}'> log out {{ user.username }}</a>
+    {% else %}
+        <a class="lin" href="{% url 'users:login' %}">  log in </a>
+    {% endif %}
+{% endblock %}
+
+
+{% block content %}
+    <div>
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <th>Slug</th>
+                <th>qnt</th>
+                <th>Price</th>
+                <th>Capitalization</th>
+                <th>Diurnal changes %</th>
+            </tr>
+            <tr>
+                <td>{{ crypto.name }}</td>
+                <td>{{ crypto.slug }}</td>
+                <td>{{ crypto.total_supply }}</td>
+                <td>{{ crypto.price }}</td>
+                <td>{{ crypto.market_cap }}</td>
+                <td>{{ crypto.percent_change_24h }}</td>
+            </tr>
+        </table>
+
+
+        {% if user.is_authenticated %}
+
+            {% if isAdded %}
+                <p>you're already tracking this currency</p>
+                <a style="text-decoration: none; color:black; font-weight: bold;"  href="{% url 'crypto_currencies:remove_from_favourites' crypto.pk %}"> delete from favourites </a>
+
+            {% else %}
+
+                <p>you don't track this currency</p>
+                <a  style="text-decoration: none; color:black; font-weight: bold;" href="{% url 'crypto_currencies:add_to_favourites' crypto.pk %}"> add to favourites</a>
+
+            {% endif %}
+
+        {% else %}
+
+            <p>to add a currency to your favourites list you need to register </p>
+
+        {% endif %}
+
+    </div>
+{% endblock %}

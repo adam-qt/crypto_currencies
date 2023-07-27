@@ -1,0 +1,67 @@
+{% extends 'crypto_currencies/layout.html' %}
+{% load static %}
+
+
+{% block user %}
+    {% if user.is_authenticated %}
+        <a href='{% url 'users:logout' %}'> log out {{ user.username }}</a>
+    {% else %}
+        <a class="lin" href="{% url 'users:login' %}">  log in </a>
+    {% endif %}
+{% endblock %}
+{% block favourite %}
+    {% if user.is_authenticated %}
+        <a class="lin" href="{% url 'crypto_currencies:favourites' %}"> favourites </a>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div id = 'tabl'>
+        <form class='search' method="GET" action="{% url 'crypto_currencies:crypto_list' %} ">
+            <input type="text" name="search_query" placeholder="search...">
+            <button type="submit">Search</button>
+        </form>
+        <table class="table">
+            <tr>
+                <th> <a  href="{% url 'crypto_currencies:crypto_list'  %}">Name</a></th>
+                <th><a href="?sort=slug">Slug</a></th>
+                <th><a href="?sort=total_supply">qnt</a></th>
+                <th><a href="?sort=price">Price</a></th>
+                <th><a href="?sort=market_cap">Capitalization</a></th>
+                <th><a href = "?sort=percent_change_24h">Diurnal changes</a>  %</th>
+            </tr>
+
+            {% if object_list %}
+
+                {% for i in object_list %}
+
+                    <tr>
+                        <td><a href="{% url 'crypto_currencies:detail_view' i.pk %}">{{ i.name }}</a></td>
+                        <td>{{ i.slug }}</td>
+                        <td>{{ i.total_supply }}</td>
+                        <td>{{ i.price }}</td>
+                        <td>{{ i.market_cap }}</td>
+                        <td>{{ i.percent_change_24h }}</td>
+                    </tr>
+
+                {% endfor %}
+
+            {% endif %}
+
+        </table>
+    <div class="pagination">
+ <span class="step-links">
+ {% if page_obj.has_previous %}
+     <a  href="{% url 'crypto_currencies:paginator' page_obj.previous_page_number %}?sort={{ request.GET.sort }}" style="text-decoration: none; color:black;">Previous</a>
+ {% endif %}
+     <span class="current">
+ Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+ </span>
+     {% if page_obj.has_next %}
+         <a  href="{% url 'crypto_currencies:paginator' page_obj.next_page_number %}?sort={{ request.GET.sort }}" style="text-decoration: none; color:black; ">Next</a>
+     {% endif %}
+ </span>
+    </div>
+{#        <a href="{% url 'data:data' %}">вернуться на главную</a>#}
+    </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'crypto_currencies/list.html' %}
+{% load static %}
+{% block favourite %}
+<a class="lin" href='{% url 'crypto_currencies:crypto_list' %}' >main page</a>
+{% endblock %}
+{% block content %}
+    <div id = 'tabl'>
+            <table class="table">
+            <p style = 'font-weight: bold;'>your favourites</p>
+            <tr>
+                <th> <a  href="{% url 'crypto_currencies:favourites'  %}">Name</a></th>
+                <th><a href="?sort=slug">Slug</a></th>
+                <th><a href="?sort=total_supply">qnt</a></th>
+                <th><a href="?sort=price">Price</a></th>
+                <th><a href="?sort=market_cap">Capitalization</a></th>
+                <th><a href = "?sort=percent_change_24h">Diurnal changes</a>  %</th>
+            </tr>
+
+            {% if object_list %}
+
+                {% for i in object_list %}
+
+                    <tr>
+                        <td><a href="{% url 'crypto_currencies:detail_view' i.pk %}">{{ i.name }}</a></td>
+                        <td>{{ i.slug }}</td>
+                        <td>{{ i.total_supply }}</td>
+                        <td>{{ i.price }}</td>
+                        <td>{{ i.market_cap }}</td>
+                        <td>{{ i.percent_change_24h }}</td>
+                    </tr>
+
+                {% endfor %}
+
+            {% endif %}
+
+        </table>
+
+
+    </div>
+{% endblock %}
+
+
+
+
+
